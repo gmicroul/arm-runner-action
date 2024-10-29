@@ -1,4 +1,4 @@
-name: Test ArchLinux
+name: Test ArchLinux Kupferbootstarp
 on:
   push:
     branches:
