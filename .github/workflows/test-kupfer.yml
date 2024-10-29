@@ -10,7 +10,7 @@ on:
 jobs:
   # ArchLinux does not come with an image combining root and boot partitions
   # This shows how to proceed and could be combined with cache.
-  test_archlinux:
+  test_archlinux_kupfer:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
@@ -70,3 +70,19 @@ jobs:
             # 10. Initialize the pacman keyring and populate the Arch Linux ARM package signing keys:
             pacman-key --init
             pacman-key --populate archlinuxarm
+            pacman -Sy
+            pacman -S python python-pip docker docker-buildx git glibc wget --needed --noconfirm
+            rm /usr/lib/python3.12/EXTERNALLY-MANAGED
+            echo "whoami=$(whoami)"
+            usermod -aG docker "$(whoami)"
+            git clone -b dev https://gitlab.com/kupfer/kupferbootstrap
+            cd kupferbootstrap
+            pip3 install -r requirements.txt
+            ln -s "$(pwd)/bin/kupferbootstrap" /usr/local/bin/
+            kupferbootstrap --help
+            pwd
+            wget https://github.com/gmicroul/action_for_pmos/raw/refs/heads/main/kupferbootstrap.toml
+            kupferbootstrap config init -N
+            kupferbootstrap config profile init
+            cp -r ./kupferbootstrap.toml /root/.config/kupfer/kupferbootstrap.toml
+            kupferbootstrap image build oneplus-fajita
