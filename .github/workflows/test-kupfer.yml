@@ -72,7 +72,7 @@ jobs:
             pacman-key --populate archlinuxarm
             pacman -Sy
             pacman -S  wget git glibc python-pip --needed --noconfirm
-            #rm /usr/lib/python3.12/EXTERNALLY-MANAGED
+            rm /usr/lib/python3.12/EXTERNALLY-MANAGED
             echo "whoami=$(whoami)"
             #usermod -aG docker "$(whoami)"
             git clone -b dev https://gitlab.com/kupfer/kupferbootstrap
