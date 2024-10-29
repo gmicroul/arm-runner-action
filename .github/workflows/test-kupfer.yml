@@ -71,7 +71,7 @@ jobs:
             pacman-key --init
             pacman-key --populate archlinuxarm
             pacman -Sy
-            pacman -S  wget --needed --noconfirm
+            pacman -S  wget git --needed --noconfirm
             #rm /usr/lib/python3.12/EXTERNALLY-MANAGED
             echo "whoami=$(whoami)"
             #usermod -aG docker "$(whoami)"
