@@ -74,6 +74,7 @@ jobs:
             pacman -S  wget git glibc python-pip --needed --noconfirm
             rm /usr/lib/python3.12/EXTERNALLY-MANAGED
             echo "whoami=$(whoami)"
+            export LD_LIBRARY_PATH=/lib64/:${LD_LIBRARY_PATH}
             #usermod -aG docker "$(whoami)"
             git clone -b dev https://gitlab.com/kupfer/kupferbootstrap
             cd kupferbootstrap
