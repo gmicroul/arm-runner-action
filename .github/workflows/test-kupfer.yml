@@ -11,7 +11,7 @@ jobs:
   # ArchLinux does not come with an image combining root and boot partitions
   # This shows how to proceed and could be combined with cache.
   test_archlinux_kupfer:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
     - name: Prepare ArchLinux image
