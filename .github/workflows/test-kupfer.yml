@@ -59,7 +59,7 @@ jobs:
         # 7. Unmount the two partitions:
         sudo umount boot root
         # Cleanup
-        rm ArchLinuxARM-rpi-armv7-latest.tar.gz
+        rm ArchLinuxARM-aarch64-latest.tar.gz
         rmdir boot
         rmdir root
     - uses: ./ # pguyot/arm-runner-action@HEAD
